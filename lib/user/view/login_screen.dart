@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:codefactory/common/const/colors.dart';
 import 'package:codefactory/common/const/data.dart';
 import 'package:codefactory/common/layout/default_layout.dart';
@@ -25,10 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final dio = Dio();
-    //-- localhost
-    final emulatorIp = '10.0.2.2:3000';
-    final simulatorIp = '127.0.0.1:3000';
-    final ip = Platform.isIOS == true ? simulatorIp : emulatorIp;
+
 
     return DefaultLayout(
       child: GestureDetector(
@@ -85,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           headers: {'authorization': 'Basic $token'},
                         ),
                       );
-                      final refreshToken = resp.data['refreshToken']; 
+                      final refreshToken = resp.data['refreshToken'];
                       final accessToken = resp.data['accessToken'];
 
                       await storage.write(key: REFRESH_TOKEN_KEY, value: refreshToken);
@@ -103,19 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () async {
-                      // todo
 
-                      // refresh token test
-                      final refreshToken =
-                          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RAY29kZWZhY3RvcnkuYWkiLCJzdWIiOiJmNTViMzJkMi00ZDY4LTRjMWUtYTNjYS1kYTlkN2QwZDkyZTUiLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY2NTAzMDE4NiwiZXhwIjoxNjY1MTE2NTg2fQ.2tHtnSN43Lji9W3mLTVCM64br9Ol-EfeyFntKYEYoRA';
-
-                      final resp = await dio.post(
-                        "http://${ip}/auth/token",
-                        options: Options(
-                          headers: {'authorization': 'Bearer $refreshToken'},
-                        ),
-                      );
-                      print(resp.data); // 응답의 body 값
                     },
                     child: Text(
                       '회원가입',
@@ -141,11 +125,7 @@ class _Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '환영합니다!',
-      style: TextStyle(
-        fontSize: 34.0,
-        fontWeight: FontWeight.w500,
-        color: Colors.black,
-      ),
+      style: TextStyle(fontSize: 34.0, fontWeight: FontWeight.w500, color: Colors.black),
     );
   }
 }

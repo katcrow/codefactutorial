@@ -2,23 +2,24 @@ import 'package:codefactory/common/const/colors.dart';
 import 'package:flutter/material.dart';
 
 class RestaurantCard extends StatelessWidget {
-  final Widget image;
-  final String name;
-  final List<String> tags;
-  final int ratingCount;
-  final int deliveryTime;
-  final int deliveryFee;
-  final double rating;
+  final Widget image; // 이미지
+  final String name; // 레스토랑 이름
+  final List<String> tags; // 레스토랑 태그
+  final int ratingsCount; // 평점 갯수
+  final int deliveryTime; // 배송걸리는 시간
+  final int deliveryFee; // 배송비용
+  final double ratings; // 평균 평점
 
+  // 생성자
   const RestaurantCard({
     Key? key,
     required this.image,
     required this.name,
     required this.tags,
-    required this.ratingCount,
+    required this.ratingsCount,
     required this.deliveryTime,
     required this.deliveryFee,
-    required this.rating,
+    required this.ratings,
   }) : super(key: key);
 
   @override
@@ -45,12 +46,12 @@ class RestaurantCard extends StatelessWidget {
             SizedBox(height: 8),
             Row(
               children: [
-                _IconText(icon: Icons.star, label: rating.toString()),
-                rederDot(),
-                _IconText(icon: Icons.receipt, label: ratingCount.toString()),
-                rederDot(),
+                _IconText(icon: Icons.star, label: ratings.toString()),
+                renderDot(),
+                _IconText(icon: Icons.receipt, label: ratingsCount.toString()),
+                renderDot(),
                 _IconText(icon: Icons.timelapse_outlined, label: "${deliveryTime} 분"),
-                rederDot(),
+                renderDot(),
                 _IconText(
                     icon: Icons.monetization_on,
                     label: deliveryFee == 0 ? '무료' : deliveryFee.toString()),
@@ -62,12 +63,13 @@ class RestaurantCard extends StatelessWidget {
     );
   }
 
-  Widget rederDot() {
+  Widget renderDot() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
-      child: Text('·', style: TextStyle(
-        fontWeight: FontWeight.w500, fontSize: 12.0
-      ),),
+      child: Text(
+        '·',
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12.0),
+      ),
     );
   }
 }
@@ -91,7 +93,7 @@ class _IconText extends StatelessWidget {
         Text(
           label,
           style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-        )
+        ),
       ],
     );
   }
