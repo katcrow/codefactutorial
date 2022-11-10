@@ -12,16 +12,22 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   dio: ^4.0.6
   flutter_secure_storage: ^6.0.0
+  json_annotation: ^4.7.0
+  retrofit: any
+  logger: any
+  flutter_riverpod: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.1
+  build_runner: ^2.3.2
+  json_serializable: ^6.5.4
+  retrofit_generator: any
 
 # The following section is specific to Flutter packages.
 flutter:

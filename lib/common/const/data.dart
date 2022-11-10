@@ -9,6 +9,5 @@ final emulatorIp = '10.0.2.2:3000';
 final simulatorIp = '127.0.0.1:3000';
 final ip = Platform.isIOS == true ? simulatorIp : emulatorIp;
 
-
-// 저장소
-final storage = FlutterSecureStorage();
+// // 저장소
+// final storage = FlutterSecureStorage(); // chk : Provider 로 이동되었음
